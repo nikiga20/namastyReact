@@ -1,0 +1,40 @@
+import { restrauntList } from "../config";
+import { RestrauntCard } from "./RestaurantCard";
+import { useState } from "react";
+
+function filterData(searchText, restaurants){
+   const filterData = restaurants.filter((restaurant) => restaurant.data.name.includes(searchText));
+   return filterData
+}
+
+const Body = () => {
+    const [searchText, setSearchText] = useState("");
+    const [restuarants, setRestuarents] = useState(restrauntList);
+    return (
+        <>
+        <div className="search-container">
+            <input
+            type = "text"
+            className="search-input"
+            placeholder="Search"
+            value={searchText}
+            onChange={(e) => {
+                setSearchText(e.target.value);
+            }}
+            />
+            <button className="search-btn" onClick={() => {
+              const data = filterData(searchText, restuarants);
+              setRestuarents(data);
+            }}>Search</button>
+        </div>
+        <div className="resturant-list">
+          {restuarants.map((restaurant) => {
+              return <RestrauntCard {...restaurant.data} key = {restaurant.data.id}/>
+          })}
+        </div>
+        </>
+        
+    )
+}
+
+export default Body;
