@@ -7,7 +7,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import RestuarantMenu from "./components/restuarantmenu";
+import RestuarantMenu from "./components/RestuarantMenu";
 
 const AppLayout = () => {
   return (
